@@ -1,13 +1,50 @@
+-- return {
+--   "goolord/alpha-nvim",
+--   dependencies = {
+--     "nvim-tree/nvim-web-devicons",
+--   },
+--
+--   config = function()
+--     local alpha = require("alpha")
+--     local dashboard = require("alpha.themes.startify")
+--   -- Center the dashboard
+--       dashboard.layout = {
+--         { type = "text", val = "Welcome to Neovim!", opts = { position = "center", hl = "Type" } },
+--         { type = "text", val = "Your options are below:", opts = { position = "center", hl = "Identifier" } },
+--       }
+--
+--     dashboard.section.header.val = {
+--       [[                                                                       ]],
+--       [[                                                                       ]],
+--       [[                                                                       ]],
+--       [[                                                                       ]],
+--       [[                                                                     ]],
+--       [[       ████ ██████           █████      ██                     ]],
+--       [[      ███████████             █████                             ]],
+--       [[      █████████ ███████████████████ ███   ███████████   ]],
+--       [[     █████████  ███    █████████████ █████ ██████████████   ]],
+--       [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+--       [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+--       [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+--       [[                                                                       ]],
+--       [[                                                                       ]],
+--       [[                                                                       ]],
+--     }
+--
+--     alpha.setup(dashboard.opts)
+--   end,
+-- }
+
+-- Full Neovim config with nvim-autopairs, nvim-cmp, autoformat on save, and alpha.nvim
 return {
-  "goolord/alpha-nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
+  -- Alpha dashboard
+  {
+    'goolord/alpha-nvim',
+    config = function()
+      local alpha = require("alpha")
+      local dashboard = require("alpha.themes.dashboard")
 
-  config = function()
-    local alpha = require("alpha")
-    local dashboard = require("alpha.themes.startify")
-
+      -- Set the header and other options as needed
     dashboard.section.header.val = {
       [[                                                                       ]],
       [[                                                                       ]],
@@ -25,7 +62,23 @@ return {
       [[                                                                       ]],
       [[                                                                       ]],
     }
+      -- Center the dashboard layout
+      dashboard.layout = {
+        { type = "text", val = "Welcome to Neovim!", opts = { position = "center", hl = "Type" } },
+        { type = "text", val = "Your options are below:", opts = { position = "center", hl = "Identifier" } },
+      }
 
-    alpha.setup(dashboard.opts)
-  end,
+      -- Optional: Add a list of shortcuts or commands
+      dashboard.section.buttons.val = {
+        dashboard.button("f", "🔍  Find file", ":Telescope find_files<CR>"),
+        dashboard.button("n", "📄  New file", ":enew<CR>"),
+        dashboard.button("r", "📂  Recently used files", ":Telescope oldfiles<CR>"),
+        dashboard.button("s", "⚙️  Settings", ":e ~/.config/nvim/init.lua<CR>"),
+        dashboard.button("q", "🚪  Quit Neovim", ":qa<CR>"),
+      }
+
+      -- Setup alpha
+      alpha.setup(dashboard.opts)
+    end
+  },
 }
