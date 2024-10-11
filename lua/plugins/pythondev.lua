@@ -1,0 +1,67 @@
+return {
+
+}
+-- -- ~/.config/nvim/lua/plugins/pythondev.lua
+--
+-- -- Load Lazy.nvim setup
+-- return {
+--     -- LSP and DAP for Python
+--     {
+--         'neovim/nvim-lspconfig',
+--         config = function()
+--             require('lspconfig').pyright.setup{}
+--         end,
+--     },
+--     {
+--         'hrsh7th/nvim-cmp',               -- Autocompletion
+--         dependencies = {
+--             'hrsh7th/cmp-nvim-lsp',       -- LSP source for nvim-cmp
+--             'hrsh7th/cmp-buffer',          -- Buffer completions
+--             'hrsh7th/cmp-path',            -- Path completions
+--             'hrsh7th/cmp-cmdline',         -- Cmdline completions
+--         },
+--         config = function()
+--             local cmp = require('cmp')
+--             cmp.setup({
+--                 snippet = {
+--                     expand = function(args)
+--                         require('luasnip').lsp_expand(args.body)  -- Using luasnip for snippets
+--                     end,
+--                 },
+--                 mapping = {
+--                     ['<C-n>'] = cmp.mapping.select_next_item(),
+--                     ['<C-p>'] = cmp.mapping.select_prev_item(),
+--                     ['<C-Space>'] = cmp.mapping.complete(),
+--                     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+--                 },
+--                 sources = {
+--                     { name = 'nvim_lsp' },
+--                     { name = 'buffer' },
+--                     { name = 'path' },
+--                 },
+--             })
+--         end,
+--     },
+--     {
+--         'mfussenegger/nvim-dap-python',   -- DAP for Python
+--         config = function()
+--             local dap = require('dap-python')
+--             dap.setup('/usr/sbin/python')  -- Use your Python interpreter path
+--
+--             -- Set defaults after dap is initialized
+--             dap.defaults.python_interpreter = '/usr/sbin/python'  -- Ensure this is correct
+--         end,
+--     },
+--     {
+--         'folke/noice.nvim',                -- UI for notifications
+--         config = function()
+--             require("noice").setup {}
+--         end,
+--     },
+--     { 'windwp/nvim-autopairs' },         -- Autopairs for brackets
+--     {
+--         'nvim-treesitter/nvim-treesitter', 
+--         run = ':TSUpdate',                 -- Treesitter for syntax highlighting
+--     },
+-- }
+--
