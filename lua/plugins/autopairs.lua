@@ -1,49 +1,4 @@
--- return {
---   {
---     "williamboman/mason.nvim",
---     lazy = false,
---     config = function()
---       require("mason").setup()
---     end,
---   },
---   {
---     "williamboman/mason-lspconfig.nvim",
---     lazy = false,
---     opts = {
---       auto_install = true,
---     },
---   },
---   {
---     "neovim/nvim-lspconfig",
---     lazy = false,
---     config = function()
---       local capabilities = require('cmp_nvim_lsp').default_capabilities()
---
---       local lspconfig = require("lspconfig")
---       lspconfig.ts_ls.setup({
---         capabilities = capabilities
---       })
---       lspconfig.solargraph.setup({
---         capabilities = capabilities
---       })
---       lspconfig.html.setup({
---         capabilities = capabilities
---       })
---       lspconfig.lua_ls.setup({
---         capabilities = capabilities
---       })
---
---       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
---       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
---       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
---       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
---     end,
---   },
--- }
---
---
-
--- Full Neovim config with nvim-autopairs, nvim-cmp, and autoformat on save using Lazy.nvim
+-- Full Neovim config with nvim-autopairs and nvim-cmp integration using Lazy.nvim
 return {
   -- Autopairs plugin
   {
@@ -105,27 +60,6 @@ return {
         })
       })
     end
-  },
-
-  -- LSP configuration with auto-format on save
-  {
-    'neovim/nvim-lspconfig',
-    config = function()
-      local lspconfig = require('lspconfig')
-      lspconfig.util.default_config = {
-        on_attach = function(client, bufnr)
-          -- Enable auto-formatting
-          if client.server_capabilities.documentFormattingProvider then
-            vim.cmd [[
-              augroup LspFormatting
-                autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-              augroup END
-            ]]
-          end
-        end,
-      }
-    end,
-  },
+  }
 }
 
