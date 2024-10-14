@@ -5,6 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons", -- optional, for file icons
     "MunifTanjim/nui.nvim",
+    "3rd/image.nvim",
   },
   config = function()
     require('neo-tree').setup {
@@ -40,6 +41,13 @@ return {
           },
         },
       },
+      buffers = {
+          follow_current_file = {
+            enabled = true, -- This will find and focus the file in the active buffer every time
+            --              -- the current file is changed while the tree is open.
+            leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+          },
+      },
       window = {
         position = "left", -- Can also be "right" or "float"
         width = 30,
@@ -62,6 +70,9 @@ return {
             "thumbs.db",
           },
         },
+        always_show = { -- remains visible even if other settings would normally hide it
+              --".gitignored",
+            },
         follow_current_file = true, -- Automatically focus the current file
         group_empty_dirs = true, -- Group empty folders together
         hijack_netrw_behavior = "open_current",

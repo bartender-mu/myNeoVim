@@ -1,4 +1,4 @@
--- LazyVim configuration for telescope.nvim setup
+-- LazyVim configuration for telescope.nvim with ui-select customization
 return {
   {
     'nvim-telescope/telescope.nvim',
@@ -56,8 +56,19 @@ return {
           },
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({
-              -- Add customization here if needed
-            })
+              winblend = 15,                -- Transparency of the popup window
+              layout_config = {
+                width = 0.4,                -- Adjust the width of the dropdown
+                height = 0.3,               -- Adjust the height of the dropdown
+              },
+              border = true,                -- Show border around the dropdown
+              borderchars = {               -- Customize the border style
+                '─', '│', '─', '│', '╭', '╮', '╯', '╰'
+              },
+              previewer = false,            -- Disable previewer in the dropdown
+              prompt_title = false,         -- Hide prompt title
+              results_title = false,        -- Hide results title
+            }),
           },
         },
       })
