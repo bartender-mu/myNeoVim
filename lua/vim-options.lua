@@ -8,6 +8,7 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.wo.number = true
 
 
+
 -- -- Key mappings for LSP actions
 -- vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { noremap = true, silent = true })
@@ -79,4 +80,7 @@ map('n', '<leader>r', ':Neotree buffers<CR>', opts) -- Refresh NvimTree
 
 -- Custom actions
 map('n', '<leader>x', ':!chmod +x %<CR>', opts)    -- Make current file executable
+
+-- Map <leader>c to close the current buffer
+vim.api.nvim_set_keymap('n', '<leader>c', ':bd<CR>', { silent = true })
 

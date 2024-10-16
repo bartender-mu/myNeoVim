@@ -14,7 +14,7 @@ return {
         dependencies = { "williamboman/mason.nvim" },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "pyright", "tsserver", "rust_analyzer" }, -- Add your preferred language servers here
+                ensure_installed = { "pyright", "ts_ls", "rust_analyzer" }, -- Add your preferred language servers here
             })
 
             local lspconfig = require("lspconfig")

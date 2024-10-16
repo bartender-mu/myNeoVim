@@ -66,7 +66,28 @@ return {
 					signature = { view = "hover" },
 				},
 				presets = {
-					command_palette = true,
+					-- command_palette = true,
+					command_palette = {
+					  views = {
+					    cmdline_popup = {
+					      position = {
+						row = "50%",
+						col = "50%",
+					      },
+					      size = {
+						min_width = 60,
+						width = "auto",
+						height = "auto",
+					      },
+					    },
+					    cmdline_popupmenu = {
+					      position = {
+						row = "67%",
+						col = "50%",
+					      },
+					    },
+					  },
+					},
 					long_message_to_split = true,
 					lsp_doc_border = true,
 				},
