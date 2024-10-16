@@ -1,4 +1,3 @@
--- LazyVim configuration for telescope.nvim with ui-select customization
 return {
   {
     'nvim-telescope/telescope.nvim',
@@ -13,7 +12,6 @@ return {
       local telescope = require('telescope')
       local actions = require('telescope.actions')
 
-      -- Telescope setup
       telescope.setup({
         defaults = {
           prompt_prefix = "🔭 ",
@@ -26,7 +24,8 @@ return {
               results_width = 0.8,
             },
             vertical = {
-              preview_height = 0.7,
+              preview_height = 0.5,  -- Adjust preview height if needed
+              mirror = false,
             },
           },
           mappings = {
@@ -41,10 +40,21 @@ return {
         pickers = {
           find_files = {
             theme = "dropdown",
-            previewer = false,
+            previewer = true,
+            layout_strategy = "horizontal",  -- Use horizontal layout for find_files
+            layout_config = {
+              width = 0.8,          -- Set the width of the find_files window to 80% of the screen
+              height = 0.6,         -- Set the height of the find_files window to 60% of the screen
+            },
           },
           live_grep = {
             theme = "ivy",
+            layout_strategy = "vertical",
+            layout_config = {
+              vertical = {
+                preview_height = 0.5,
+              },
+            },
           },
         },
         extensions = {
@@ -56,24 +66,23 @@ return {
           },
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({
-              winblend = 15,                -- Transparency of the popup window
+              winblend = 15,
               layout_config = {
-                width = 0.4,                -- Adjust the width of the dropdown
-                height = 0.3,               -- Adjust the height of the dropdown
+                width = 0.4,
+                height = 0.3,
               },
-              border = true,                -- Show border around the dropdown
-              borderchars = {               -- Customize the border style
+              border = true,
+              borderchars = {
                 '─', '│', '─', '│', '╭', '╮', '╯', '╰'
               },
-              previewer = false,            -- Disable previewer in the dropdown
-              prompt_title = false,         -- Hide prompt title
-              results_title = false,        -- Hide results title
+              previewer = false,
+              prompt_title = false,
+              results_title = false,
             }),
           },
         },
       })
 
-      -- Load Telescope extensions
       telescope.load_extension('fzf')
       telescope.load_extension('ui-select')
       telescope.load_extension('file_browser')
@@ -82,8 +91,7 @@ return {
       vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', { noremap = true, silent = true })
       vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
       vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope file_browser<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>fw', '<cmd>Telescope file_browser<CR>', { noremap = true, silent = true })
     end,
   },
 }

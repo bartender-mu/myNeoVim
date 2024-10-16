@@ -1,0 +1,37 @@
+return {
+    -- "numToStr/Comment.nvim",
+    -- config = function()
+    --     require("Comment").setup()
+    --     
+    --     local wk = require("which-key")
+    --
+    --     wk.register({
+    --         { "<leader><leader>/", desc = "<cmd>CommentToggle<cr>" },
+    --
+    --         { "<leader>", desc = "<leader><leader>/" },
+    --         -- Other key mappings can go here
+    --         -- b = {
+    --         --     name = "Buffer", 
+    --         --     d = "Delete", 
+    --         --     n = "New"
+    --         -- },
+    --         -- f = {
+    --         --     name = "File", 
+    --         --     f = "Find File", 
+    --         --     r = "Recent", 
+    --         --     s = "Save"
+    --         -- },
+    --         -- g = {
+    --         --     name = "Git", 
+    --         --     c = "Commit", 
+    --         --     s = "Status"
+    --         -- },
+    --         -- l = {
+    --         --     name = "LSP", 
+    --         --     a = "Code Actions", 
+    --         --     r = "Rename"
+    --         -- },
+    --     }, { prefix = "<leader>", silent = true })
+    -- end,
+}
+

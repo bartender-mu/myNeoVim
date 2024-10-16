@@ -13,10 +13,11 @@ return {
         },
         -- Auto-format on save
         on_attach = function(client, bufnr)
-          if client.resolved_capabilities.document_formatting then
+          -- Use 'server_capabilities' instead of 'resolved_capabilities'
+          if client.server_capabilities.documentFormattingProvider then
             vim.api.nvim_command [[augroup Format]]
             vim.api.nvim_command [[autocmd! * <buffer>]]
-            vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+            vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ bufnr = bufnr })]]
             vim.api.nvim_command [[augroup END]]
           end
         end,
